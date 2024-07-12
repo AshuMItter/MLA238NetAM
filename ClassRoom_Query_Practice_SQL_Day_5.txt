@@ -1,0 +1,179 @@
+CREATE TABLE CUSTOMERS (
+   ID INT NOT NULL,
+   NAME VARCHAR (20) NOT NULL,
+   AGE INT NOT NULL,
+   ADDRESS CHAR (25),
+   SALARY DECIMAL (18, 2),       
+   PRIMARY KEY (ID)
+);
+
+INSERT INTO CUSTOMERS VALUES
+(1, 'Ramesh', 32, 'Ahmedabad', 2000.00 ),
+(2, 'Khilan', 25, 'Delhi', 1500.00 ),
+(3, 'Kaushik', 23, 'Kota', 2000.00 ),
+(4, 'Chaitali', 25, 'Mumbai', 6500.00 ),
+(5, 'Hardik', 27, 'Bhopal', 8500.00 ),
+(6, 'Komal', 22, 'Hyderabad', 4500.00 ),
+(7, 'Muffy', 24, 'Indore', 10000.00 );
+
+-- corelated sub queries
+
+SELECT p.*
+FROM Products p
+WHERE p.UnitPrice = (
+  SELECT MAX(UnitPrice)
+  FROM Products
+);
+
+SELECT LEFT('New York', 4) AS City;
+
+SELECT DATEADD(day, 7, '2024-07-12') AS WeekFromToday;
+
+use Employee
+select * from People
+--union all
+select * from Places
+
+SELECT Places.PlaceId, People.EmpName, Places.PlaceName
+FROM Places
+Inner JOIN People ON Places.VisitingEmpployeeID=People.EMPId;
+
+select * from People
+select * from Places
+
+select * from Places 
+join People on Places.PlaceId = People.EMPId
+join Products 
+on Places.PlaceId = Products.ProductID
+join GFGemployees
+on Products.ProductID = GFGemployees.employee_id
+
+ create table T1(
+ empId int,
+ Duration datetime
+ )
+ insert into T1 values (1,'00:00:00:00')
+
+alter table Places add VisitingEmpployeeID int
+
+insert into Places values('Himachal','Tourist Destination',900,1)
+insert into Places values('Delhi','Tourist Destination',900,2)
+insert into Places values('Pune','Tourist Destination',900,3)
+
+SELECT *
+FROM Places
+INNER JOIN People ON Places.VisitingEmpployeeID=People.EMPId;
+
+
+-- right outer join
+SELECT 
+   v.EmpName,  
+   po.PlaceName
+  
+FROM Places as po
+   RIGHT OUTER JOIN People as v  ON po.PlaceID = v.EMPId
+
+  
+
+-- self join
+SELECT
+    employee.PlaceId,
+        employee.PlaceName,
+        employee.PlaceDescription,
+        manager.PlaceType as PT
+FROM Places employee
+JOIN Places manager
+ON employee.PlaceId = manager.VisitingEmpployeeID
+
+
+use Employee
+select * from People
+
+delete People where EMPId = 8
+
+update People 
+set EmpDesignation = 'Sales',
+EmpAge = 33
+where EMPId = 3
+
+-- specific column values
+select EmpAge,EmpDesignation from People
+
+-- descending ordering
+select * from People order by EMPId DESC
+--- ascending order alphabetically
+select * from People order by EmpDesignation ASC
+
+-- logical and
+select * from People where EMPId = 1 and EmpSalary = 100000
+
+-- logical or
+select * from People where EMPId = 1 or EmpSalary = 100
+
+-- like
+--filtering column value by last word
+
+select * from People  where  EmpName  like '%h'
+
+-- opposite
+select * from People  where  EmpName not like '%h'
+
+-- non dublicate values
+select distinct * from People
+
+--bring top 3 values from top
+select top 3 * from People
+
+select * from People where EmpSalary between 10000 and 100000
+
+--to replace this
+select * from People where EmpSalary = 50000 or EmpSalary = 90000 or EmpSalary = 40000
+-- we have in statement in T-SQL
+select * from People where EmpSalary IN (60000,50000,30000)
+select * from People where EmpAddress IN ('Pune','Mumbai','Dhn')
+
+select LEN('Our string') as Length_of_String
+-- extraction from begning 
+select LEFT('NewYork', 4) as city
+
+-- extration from right side
+select RIGHT('NewYork', 4) as city 
+
+select TRIM(' Demo ') as Trimmed
+
+select Ceiling(3.14) as Ceiling_
+
+select Floor(3.14) as Floor_
+
+select POWER(2,3) as Powervalue
+-- date function
+select GETDATE() as current_Date_
+
+select DATEADD(month,2,'2017/08/25') as date_add
+-- comparing two dates to get value in terms of year, days and months                       
+select DATEDIFF(year,'2022-12-31','2024-05-01') as DaysThisyear
+
+select DATEDIFF(year,'2000-11-30',GETDATE()) as DaysThisyear
+
+-- extract some particular value 
+select YEAR('2023-12-31') as YearExtracted
+select DAY('2023-12-31') as DayExtracted
+select Month('2023-12-31') as MonthExtracted
+
+select * from People
+insert into People values('Tanya',23,'Pune','Hr',20000,Year('2023/12/31'), GETDATE())
+insert into People values('Tanya',23,'Pune','Hr',20000,DATEDIFF(year,'2000-11-30',GETDATE()), GETDATE())
+
+select DATEDIFF(year,'2000-11-30',GETDATE())
+alter table People add _Year_ date
+ 
+
+ select count(*) as Total_no_of_People from People 
+
+ select SUM(EmpSalary) as Total_Payments_ from People
+
+ select AVG(EmpSalary) as AverageSalary from People
+
+ select MAX(EmpSalary) as HighestSalary from People
+
+ select MIN(EmpSalary) as HighestSalary from People
