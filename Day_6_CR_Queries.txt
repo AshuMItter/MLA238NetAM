@@ -1,0 +1,333 @@
+
+
+declare @age int
+set @age = 0
+print @age
+select @age = max(EmpAge) from People
+print @age
+
+alter procedure SP_DisplayMaxAgeOfEmployee
+as
+declare @age int
+set @age = 0
+
+select @age = max(EmpAge) from People
+print @age
+go
+exec SP_DisplayMaxAgeOfEmployee
+use Employee
+create procedure SP_Params(@age int,@name varchar(10))
+as
+select * from People where EmpAge = @age
+go
+-- default
+alter procedure SP_WithParams(IN @age int, @name varchar(10)='default' OUTPUT)
+as
+select * from People where EmpAge = @age
+go
+
+exec SP_WithParams 23
+
+
+
+
+
+exec SP_Params 23, 'Hello'
+
+exec SP
+create procedure SP
+as
+declare @age int
+set @age = 0
+print @age
+select @age = max(EmpAge) from People
+print @age
+go
+
+
+
+
+declare @name varchar(10)
+set @name ='demo'
+print @name
+
+select @name = student_name from Students
+print @name
+
+--alter VIEW EMP_VIEW2      
+--    AS SELECT * FROM People
+--      WHERE EmpName='Aryan'
+--    WITH CHECK OPTION;
+--	go
+--	select * from People
+--	create VIEW EMP_VIEW3     
+--    AS SELECT * FROM People
+--      order by EMPId
+--	  go
+    
+
+
+	select * from EMP_VIEW2
+	insert into EMP_VIEW2 values('Aryan2',23,'demo','hr',1000,2023,'2024-07-12')
+select * from EMP_VIEW2
+
+-- simple view
+create VIEW ReportPlaces
+as
+Select * from Places
+
+ 
+
+-- complex view
+alter VIEW ReportPlacesPeople 
+
+as select * from Places join People 
+on Places.PlaceId=People.EMPId
+
+select * from ReportPlacesPeople
+select PlaceType, EmpAge from ReportPlacesPeople
+
+-- dml trigger
+use employee
+CREATE TRIGGER T3 ON Students
+AFTER DELETE , UPDATE , INSERT
+AS
+BEGIN
+SELECT * FROM DELETED
+END
+--DISABLE TRIGGER trgTablechanges ON database
+
+
+-- ddl trigger
+--CREATE TRIGGER trgTablechanges
+--ON DATABASE
+--FOR	
+--    CREATE_TABLE,
+--    ALTER_TABLE, 
+--    DROP_TABLE
+--AS
+--BEGIN
+--    SET NOCOUNT ON;
+--    INSERT INTO TableLog
+--    (
+--       EventVal,
+--       DateChanged,
+--       ChangedBy
+--     )
+--        VALUES (
+--           EVENTDATA(),
+--           GETDATE(),
+--           USER
+--        );
+--END;
+select * from TableLog
+--Implementing User  Defined Integrity with Triggers plus magic tables
+
+--CREATE TRIGGER PreventNegativeStock 
+--ON Students
+--FOR INSERT, UPDATE
+--AS
+--BEGIN
+--  DECLARE @age int;
+
+--  -- Get the new stock level from inserted/updated data
+--  SELECT @age = student_age from INSERTED;
+
+--  -- Check for negative stock
+--  IF @age > 100 
+--  BEGIN
+--    -- Rollback transaction on violation
+--    ROLLBACK TRANSACTION;
+--    RAISERROR ('Stock level cannot be negative.', 16, 1);
+--  END;
+--END;
+select * from Students
+
+insert into students values('Radha',500,'DHN')
+delete Students where student_id =4
+
+-- altering trigger
+
+--alter TRIGGER TR_StudentsReport_Insert ON Places
+--INSTEAD OF Delete
+--AS
+--BEGIN
+--                PRINT 'delete trigger is called and value is not deleted'
+--END
+
+delete Places where PlaceId =4
+select * from Places
+--ddl trigger
+
+-- to see design of tables
+exec sp_columns Places
+
+
+
+
+select * from inserted
+select * from deleted
+
+
+
+select * from TableLog
+--drop table TableLog
+create table  TableLog3
+    (
+       EventVal xml, 
+       DateChanged date,
+       ChangedBy varchar(50)
+     )
+
+--CREATE PROCEDURE demoTwo2 (@Qty INT, @QtyRetrieved INT = 0 OUTPUT, @someValue int = 34)
+--AS
+--IF @QtyRetrieved = 0
+--BEGIN
+--    print 'yay its zero'
+--END
+--IF @QtyRetrieved is null
+--BEGIN
+--    print 'wtf its NULL'
+--END
+--RETURN
+
+--declare @QR int
+--exec demoTwo2 1, @QR output
+--print '@QR=' + coalesce(convert(varchar, @QR),'NULL')
+
+ --input output procedure
+ALTER PROCEDURE demoTwo2  (@Qty INT, @QtyRetrieved INT = 0 OUTPUT, @optional int =45)
+AS
+IF @QtyRetrieved = 0
+BEGIN
+    print 'yay its zero'
+END
+IF @QtyRetrieved is null
+BEGIN
+    print 'wtf its NULL'
+END
+SET @QtyRetrieved = @Qty
+RETURN
+
+
+
+declare @QR int
+exec demoTwo2 100, @QR output, 34
+print '@QR=' + coalesce(convert(varchar, @QR),'NULL')
+
+
+
+--scalar value functions
+
+CREATE FUNCTION dbo.CalculateDiscount (@price decimal(10,2), @discountRate int)
+RETURNS decimal(10,2)
+AS
+BEGIN
+  DECLARE @discountAmount decimal(10,2);
+  SET @discountAmount = @price * @discountRate / 100.0;
+  RETURN @price - @discountAmount;
+END;
+
+select dbo.CalculateDiscount(23.22,34)
+
+
+
+
+--create function FindAOC(@radius decimal(10,2))
+--RETURNS decimal(10,2)
+--as
+--BEGIN
+--declare @area decimal(10,2)
+--set @area = 3.14 * @radius * @radius
+--return @area
+--END
+
+--select dbo.FindAOC(2)
+
+
+
+
+
+
+
+-- table valued functions
+CREATE FUNCTION GetCustomerOrders1(@placeID int)
+RETURNS TABLE AS RETURN
+(
+  SELECT * 
+  FROM Places
+  WHERE PlaceId = @placeId
+);
+
+select * from GetCustomerOrders1(2)
+
+--single valued table functions
+
+CREATE FUNCTION GetMergedTables()
+RETURNS TABLE
+AS 
+RETURN select * from Places 
+join People on Places.PlaceId = People.EMPId
+join Products 
+on Places.PlaceId = Products.ProductID
+join GFGemployees
+on Products.ProductID = GFGemployees.employee_id
+GO
+
+select * from GetMergedTables()
+
+use Employee
+
+WITH HighSpendingCustomers AS (
+  SELECT * from People
+ )
+SELECT o.PlaceId, o.PlaceDescription
+FROM Places AS o
+INNER JOIN HighSpendingCustomers AS h ON o.PlaceId = h.EMPId;
+
+--WITH EmployeeHierarchy AS (
+--  -- Anchor Member: Find the manager directly
+--  SELECT teacher_id, teacher_age
+--  FROM techers
+--  WHERE teacher_id = 1  -- Replace with desired manager ID
+
+--  UNION ALL
+
+--  -- Recursive Member: Find employees reporting to managers already found
+--  SELECT eh.teacher_id, e.student_id
+--  FROM EmployeeHierarchy AS eh
+--  INNER JOIN Students AS e ON eh.teacher_id = e.student_ID
+--)
+--SELECT teacher_id
+--FROM EmployeeHierarchy
+--option (maxrecursion 365)
+
+select * from techers
+select * from Students
+
+--WITH EmployeeHierarchy AS (
+--  -- Anchor Member: Find the manager directly
+--  SELECT EmployeeID, ManagerID
+--  FROM Employees
+--  WHERE EmployeeID = @ManagerID  -- Replace with desired manager ID
+
+--  UNION ALL
+
+--  -- Recursive Member: Find employees reporting to managers already found
+--  SELECT eh.EmployeeID, e.ManagerID
+--  FROM EmployeeHierarchy AS eh
+--  INNER JOIN Employees AS e ON eh.ManagerID = e.EmployeeID
+--)
+--SELECT EmployeeID, Name
+--FROM EmployeeHierarchy;
+
+
+
+
+
+
+
+use Employee
+
+
+
