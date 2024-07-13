@@ -1,0 +1,9 @@
+Topic for HW (Research Work)
+
+1.Recursion and nesting limits of triggers 
+2.Triggers on views: Making Complex views updatable 
+with triggers 
+
+3.Recursive CTE 
+4.Generate Groups 
+5.Disabling triggers
