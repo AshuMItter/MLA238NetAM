@@ -410,16 +410,76 @@ document.body.appendChild(image);
  -->
 
 <script type="text/javascript">
+  const info = [{id:1,name:'Ashish',age:56,address:'Delhi'},
+  {id:2,name:'Ashish',age:56,address:'Pune'},
+  {id:3,name:'Ashish',age:56,address:'Dhn'},
+  {id:4,name:'Ashish',age:56,address:'Mum'},
+  {id:5,name:'Ashish',age:56,address:'Bihar'}
+
+  ] 
+  const table = document.createElement('table')
+   let trhead = document.createElement('tr');
+
+   let tdhead1 = document.createElement('th');
+   let tdhead2 = document.createElement('th');
+   let tdhead3 = document.createElement('th');
+   let tdhead4 = document.createElement('th');
+
+    tdhead1.innerHTML = "ID";
+    tdhead2.innerHTML = "Name";
+    tdhead3.innerHTML = "Age";
+    tdhead4.innerHTML = "Address";
+
+    trhead.appendChild(tdhead1);
+    trhead.appendChild(tdhead2);
+    trhead.appendChild(tdhead3);
+    trhead.appendChild(tdhead4);
+
+    table.appendChild(trhead);
+
+  let tr = document.createElement('tr');
+  let td = document.createElement('td');
+
+   info.forEach(value=>{
+    let tr = document.createElement('tr');
+    let td1 = document.createElement('td');
+    let td2 = document.createElement('td');
+    let td3 = document.createElement('td');
+    let td4 = document.createElement('td');
+   
+    td1.innerHTML = value.id;
+    td2.innerHTML = value.age;
+    td3.innerHTML = value.name;
+    td4.innerHTML = value.address;
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    tr.appendChild(td3);
+    tr.appendChild(td4);
+    table.appendChild(tr);
+    console.log(value);
+   })
+   
+   table.border ="1";
+    document.body.appendChild(table);
+   console.log(table);
+
+   
+
+   
 
  const image = document.createElement('img');
  image.alt = "This is image object";
  image.src = "https://via.placeholder.com/150/000000/FFFFFF/?text=y2meta.com";
  document.body.appendChild(image);
  
-
+  
 </script>
 
-
+<pre>
+    ABC  
+          code
+          FGH   ALO
+   </pre>
     <!-- <img src="https://via.placeholder.com/150/000000/FFFFFF/?text=y2meta.com" alt="when no file" style="width: 50%;height: 50%;"></img> -->
 
 
