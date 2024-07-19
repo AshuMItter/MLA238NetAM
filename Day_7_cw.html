@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        CW Day 7th
+    </title>
+    
+    <style>
+        /* table{
+            border-radius: 10px;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        } */
+         table{
+            border-collapse: collapse;
+            width: 100%;
+         }
+         th{
+            border: 1px solid black;
+            padding: 8px;
+         
+         }
+         
+         td{
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+         }
+    </style>
+</head>
+<body>
+   <table border="1">
+    <colgroup>
+    <col style="width: 10%; background-color:aquamarine">
+    <col style="width: 20%; background-color: orange;">
+    <col style="width: 30%; background-color: skyblue;">
+    <col style="width: 60%; background-color: cyan;">
+    </colgroup>
+    <caption>
+        Examples from CW
+    </caption>
+    <thead>
+        <tr>
+            <th colspan="4" style="background-color: white;">This is colspan 4</th>
+        </tr>
+        <tr>
+            <th>Col-A</th>
+            <th>Col-B</th>
+            <th>Col-C</th>
+            <th>Col-D</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>ConA</td>
+            <td>ConB</td>
+            <td>CodC</td>
+            <td rowspan="3">ConD</td>
+        </tr>
+        <tr>
+            <td>ConE</td>
+            <td>ConF</td>
+            <td>CodG</td>
+            <!-- <td>ConH</td> -->
+        </tr>
+        <tr>
+            <td>ConI</td>
+            <td>ConJ</td>
+            <td>CodK</td>
+            <!-- <td>ConL</td> -->
+        </tr>
+        <tr>
+            <td>ConM</td>
+            <td>ConN</td>
+            <td>CodO</td>
+            <td>ConP</td>
+        </tr>
+        <tr>
+            <td>ConQ</td>
+            <td>ConR</td>
+            <td>ConS</td>
+            <td>ConT</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <td colspan="4" style="font-size:xx-small;background-color:white;"><b>Table 1.1</b></td>
+            
+    </tfoot>
+   </table>
+
+   <!--  -->
+</body>
+</html>
