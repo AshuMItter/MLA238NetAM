@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html manifest="app.appcache"
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A brief and informative description of your page.">
+    <meta name="keywords" content="keyword1, keyword2, keyword3">
+    <meta name="author" content="Your Name">
+    <style>
+        table{
+            width: 100%;
+        }
+        td{
+            padding: 8px;
+            text-align: left;
+        }
+        #div1 {
+  width: 350px;
+  height: 70px;
+  padding: 10px;
+  border: 1px solid #aaaaaa;
+}
+.output {
+  overflow: scroll;
+  margin: 1rem 0;
+  height: 200px;
+}
+input:invalid {
+      border: 2px solid red;
+    }
+
+    input:valid {
+      border: 2px solid green;
+    }
+
+    input:required:invalid {
+      background-color: pink;
+    }
+
+
+    input:optional{
+        border: 4px solid green;
+    }
+    input:optional:invalid {
+      background-color: yellow;
+    }
+
+    input:required ~ label::after {
+      content: " (this field is required)";
+      color: red;
+    }
+
+    input:invalid ~ label::after {
+      content: " (invalid)";
+      color: red;
+    }
+    </style>
+</head>
+<body>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required title="this field is required">
+        <br/>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <p id="email-error"></p>
+        <br/>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br/>
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone">
+        <br/>
+        <label for="phone">Optional Element</label>
+        <input type="text" id="phone" name="phone">
+        <br/>
+        <button type="submit">Submit</button>
+      </form>
+    <!-- <fieldset>
+        <legend>Appoint Registration form</legend>
+        <table>
+            <colgroup>
+            <col style="width: 20%; background-color: aquamarine;"/>
+            <col style="width: 80%; background-color: bisque;"
+            </colgroup>
+  <form id="appoint_form" action="https://www.google.com" method="post" name="" enctype="application/x-www-form-urlencoded" target="_blank" novalidate>
+   <tbody>
+    <tr>
+        <td> <label for="txt_name">
+            Name :
+          </label></td>
+        <td><input id="txt_name"type="text" placeholder="Enter your name" maxlength="10" accesskey="q" required/></td>
+    </tr>
+    <tr>
+        <td><label for="password">
+            Password :
+           </label></td>
+        <td><input type="password" name="password" placeholder="Enter your password"/></td>
+    </tr>
+     <tr>
+        <td><label for="email">
+            Email :
+        </label></td>
+        <td><input type="email" name="email" placeholder="Email id" required/>
+        </td>
+     </tr>
+   
+    
+     <tr>
+        <td><label for="url">
+            Website :
+        </label></td>
+        <td> <input type="url" name="url" placeholder="Enter your website"/></td>
+     </tr>
+    <tr>
+        <td>  <label for="age">
+            Age :
+           </label></td>
+        <td><input type="number" name="age" min="18" max="100" pattern="" required/>
+        </td>
+    </tr>
+    
+   
+   <tr>
+    <td>  <label for="birthdate">
+        Date of Birth :
+    </label></td>
+    <td><input type="date" name="birthdate"/></td>
+   </tr>
+    
+    <tr>
+        <td><label for="appointment">
+            Appointment Time :
+        </label></td>
+        <td><input type="time" name="appointment"/></td>
+    </tr>
+    
+
+     <tr>
+        <td> <label for="eventDateTime">
+            Event Date Time :
+        </label></td>
+        <td><input type="datetime-local" name="eventDateTime"/></td>
+     </tr>
+    
+
+     <tr>
+        <td><label for="search">
+            Search Anything :
+        </label></td>
+        <td> <input type="search" name="search" placeholder="search"/></td>
+     </tr>
+    
+    <tr>
+        <td> <label for="phone">
+            Mob :
+        </label></td>
+        <td> <input type="tel" name="phone" placeholder="Enter your ph number"/></td>
+    </tr>
+    
+   
+    <tr>
+        <td><label for="file">File Upload</label></td>
+        <td> <input type="file" name="file" accept="application/x-compressed" multiple/></td>
+    </tr>
+   
+    <input type="textarea" row="5" col="5"/> -->
+
+    <!-- <tr>
+        <td><label for="days">
+            Select Day :
+         </label></td>
+        <td><select name="days">
+            <option value="0">Mon</option>
+            <option value="1">Tue</option>
+            <option value="2">Wed</option>
+            <option value="3">Thu</option>
+            <option value="4">Fri</option>
+            <option value="5">Sat</option>
+        </select></td>
+    </tr>
+     
+    <tr>
+        <td> Gender :</td>
+        <td><input type="radio" name="radio1" id="radio1" value="Male">
+            Male
+            <input type="radio" name="radio1" id="radio1" value="Female">
+            Female</td>
+    </tr>
+
+   
+    
+    <tr>
+        <td>Select Role</td>
+        <td> <input type="checkbox" value="Reader" /> Reader
+            <input type="checkbox" value="Author"/> Author</td>
+    </tr>
+    
+
+
+    <tr>
+        <td><label for="comment">Comments</label></td>
+        <td><textarea id="comment" name="comment" rows="5" cols="40" placeholder="Write your comment here..."></textarea>
+        </td>
+    </tr>
+    
+    <tr>
+        <td><label for="week"></label></td>
+        <td><input type="week" name="week"/>  </td>
+    </tr>
+    
+    
+    <tr>
+        <td> <input type="submit" value="Save" accesskey="s"/></td>
+        <td><input type="reset" value="Reset" accesskey="r"/></td>
+    </tr>
+
+    <input type="hidden" name="accessToken" value="access_token_1234567890"/>
+    
+  </form>
+</tbody>
+</table>
+</fieldset>  -->
+
+<!-- 
+
+
+
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<br/>
+<img id="drag1" src="https://picsum.photos/200/300" draggable="true" ondragstart="drag(event)" width="336" height="69">
+
+<p id="demo"></p>
+
+
+<input type="file" accept=".docx" />
+<div class="output"></div>
+<popup-info
+  img="img/alt.png"
+  data-text="Your card validation code (CVC)
+  is an extra security feature — it is the last 3 or 4 numbers on the
+  back of your card."></popup-info> -->
+
+  <details>
+    <summary>
+        Click to expand
+    </summary>
+    <p>Hidden content that expands on click</p>
+  </details>
+
+<script type="text/javascript" >
+   const emailInput = document.getElementById('email');
+const errorMessage = document.getElementById('email-error');
+
+emailInput.addEventListener('invalid', (event) => {
+    event.preventDefault();
+    errorMessage.textContent = 'Please enter a valid email address';
+});
+//    const form = document.getElementById('appoint_form');
+//    form.addEventListener('submit',(event)=>{
+//     event.preventDefault();
+
+//    const formData  = new FormData(form);
+
+//    console.log(JSON.stringify(Object.fromEntries(formData)));
+
+//    console.log(Object.fromEntries(formData));
+
+//    fetch('/target/server/url',{
+// method : 'POST',
+// headers:{
+//     'Content-Type' :'application/json'
+// },
+// body:JSON.stringify(Object.fromEntries(formData))
+
+//    }).then(res=> console.log(res.data)).catch(error => console.log(error));
+
+//    });
+  
+   const userAgent = navigator.userAgent.toLowerCase();
+
+   console.log(userAgent.indexOf('chrome'));
+if (userAgent.indexOf('chrome') !== -1 || userAgent.indexOf('chromium') !== -1) {
+    console.log('Chrome');
+} else if (userAgent.indexOf('firefox') !== -1) {
+  console.log('Firefox');
+} else if (userAgent.indexOf('safari') !== -1) {
+    Console.log('Safari');
+ 
+} else if (userAgent.indexOf('ms') !== -1) {
+    console.log('Edge or Internet Explorer');
+ 
+} else {
+    console.log('unknown');
+}
+if (typeof(Storage) !== "undefined") {
+  console.log('and sessionStorage are supported');
+} else {
+  console.log('// No Web Storage support');
+}
+
+const x = document.getElementById("demo");
+
+if ("geolocation" in navigator) {
+  /* geolocation is available */
+} else {
+  /* geolocation IS NOT available */
+}
+
+navigator.geolocation.getCurrentPosition((position) => {
+    x.innerHTML = "Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude;
+});
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude +
+  "<br>Longitude: " + position.coords.longitude;
+} 
+
+function dragstartHandler(ev) {
+    // Add the target element's id to the data transfer object
+    ev.dataTransfer.setData("text/plain", ev.target.id);
+    ev.dataTransfer.dropEffect = "all";
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    // Get the element by id
+    const element = document.getElementById("p1");
+    // Add the ondragstart event listener
+    element.addEventListener("dragstart", dragstartHandler);
+  });
+
+  function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+const fileInput = document.querySelector("input[type=file]");
+const output = document.querySelector(".output");
+
+fileInput.addEventListener("change", async () => {
+  const [file] = fileInput.files;
+
+  if (file) {
+    output.innerText = await file.text();
+  }
+});
+class PopupInfo extends HTMLElement {
+  constructor() {
+    // Always call super first in constructor
+    super();
+  }
+
+  connectedCallback() {
+    // Create a shadow root
+    const shadow = this.attachShadow({ mode: "open" });
+
+    // Create spans
+    const wrapper = document.createElement("span");
+    wrapper.setAttribute("class", "wrapper");
+
+    const icon = document.createElement("span");
+    icon.setAttribute("class", "icon");
+    icon.setAttribute("tabindex", 0);
+
+    const info = document.createElement("span");
+    info.setAttribute("class", "info");
+
+    // Take attribute content and put it inside the info span
+    const text = this.getAttribute("data-text");
+    info.textContent = text;
+
+    // Insert icon
+    let imgUrl;
+    if (this.hasAttribute("img")) {
+      imgUrl = this.getAttribute("img");
+    } else {
+      imgUrl = "img/default.png";
+    }
+
+    const img = document.createElement("img");
+    img.src = imgUrl;
+    icon.appendChild(img);
+
+    // Create some CSS to apply to the shadow dom
+    const style = document.createElement("style");
+    console.log(style.isConnected);
+
+    style.textContent = `
+      .wrapper {
+        position: relative;
+      }
+
+      .info {
+        font-size: 0.8rem;
+        width: 200px;
+        display: inline-block;
+        border: 1px solid black;
+        padding: 10px;
+        background: white;
+        border-radius: 10px;
+        opacity: 0;
+        transition: 0.6s all;
+        position: absolute;
+        bottom: 20px;
+        left: 10px;
+        z-index: 3;
+      }
+
+      img {
+        width: 1.2rem;
+      }
+
+      .icon:hover + .info, .icon:focus + .info {
+        opacity: 1;
+      }
+    `;
+
+    // Attach the created elements to the shadow dom
+    shadow.appendChild(style);
+    console.log(style.isConnected);
+    shadow.appendChild(wrapper);
+    wrapper.appendChild(icon);
+    wrapper.appendChild(info);
+  }
+}
+customElements.define("popup-info", PopupInfo);
+</script>
+<!-- <my-element>
+    
+</my-element>
+
+<p>This is some <mark>highlighted</mark> text.</p>
+<details>
+    <summary>Click to expand</summary>
+    <p>Hidden content that expands on click.</p>
+  </details>
+  <time datetime="2023-11-18T13:37:00">November 18, 2023</time>
+  <ankeeta age="34">
+    Hello World
+  </ankeeta>
+
+  <dialog open>
+    <h2>Dialog</h2>
+    <p>This is a dialog.</p>
+</dialog>
+
+<figure>
+    <img src="image.jpg" alt="An image">
+    <figcaption>A descriptive caption.</figcaption>
+  </figure>
+  <details>
+    <summary>Click to expand</summary>
+    <p>Hidden content.</p>
+  </details>
+  <input list="browsers">
+<datalist id="browsers">
+  <option value="Chrome">
+  <option value="Firefox">
+  <option value="Opera">
+  <option value="Safari">
+</datalist> -->
+
+</body>
+</html>
