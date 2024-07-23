@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<head>
+    <title>--Demo CSS--</title>
+    <style>
+     p, td, span{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-variant: small-caps;
+        font-style: italic;
+        font-weight: 600;
+        /* @font-face {
+            font-family: ;
+            src: url();
+        }; */
+        word-spacing: 55px;
+        
+
+        
+     }
+     tr:nth-child(odd){
+        background-color: aqua;
+     }
+     tr:nth-child(even){
+        background-color: blue;
+     }
+     table{
+
+        border-radius: 50mm 50px 50px 50px;
+    
+     }
+     body{
+     
+        background-color:saturate(#333, 20%);
+
+     }
+     #sec1{
+        background: repeating-linear-gradient(45deg, red, yellow 20px, blue 40px);
+        height: 10vh;
+        
+     }
+     #sec2{
+        background: radial-gradient(circle at center, red, yellow, blue);
+        height: 10vh;
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+     }
+     #sec3{
+        
+        transform: perspective(500px) rotateY(30deg);
+     }
+     input:focus{
+        border: yellow solid 3px;
+     }
+     input[type$="r"]{
+        background-color:blue;
+     }
+    </style>
+    
+</head>
+<body>
+    <section id="sec3">
+        <img src="" alt="demo">
+    </section>
+    <header></header>
+    
+     <main>
+        <section id="sec1">Linear Gradient </section>
+        <section id="sec2">Radial Gradient </section>
+        
+        
+     <p>Immediate Child</p>
+     <span>Siblingg<span>
+      <hr/>
+         <table border="1">
+            <caption>
+                Demo
+            </caption>
+            <thead>
+
+            </thead>
+            <tbody>
+        <tr><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td></tr>
+        <tr><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td></tr>
+        <tr><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td></tr>
+        <tr><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td></tr>
+        <tr><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td></tr>
+        <tr><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td></tr>
+        <tr><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td></tr>
+        <tr><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td></tr>
+        <tr><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td></tr>
+        <tr><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td><td>Hi</td></tr>
+            
+    </tbody>
+            <tfoot>
+
+            </tfoot>
+         </table>
+
+     </main>
+     <input type="text"/>
+     <input type="number"/>
+     <footer></footer>
+
+</body>
+<html>
