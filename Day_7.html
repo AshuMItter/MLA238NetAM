@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+    <title>First Page</title>
+    <script src=""></script>
+    <style>
+        table {
+  border-collapse: collapse;
+  width: 50%;
+}
+.hovered {
+  background-color: yellow;
+  color: red;
+}
+
+
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+    </style>
+    </head> 
+<body>
+  <section class="element">
+  <p>
+    Hello World
+  </p>
+  </section>
+
+
+   <input id="btn_1" type="button" value="Alert"  />
+   
+
+
+ Author: <input type="checkbox" value="author"/>  Reader: <input type="checkbox" value="reader"/>
+ Male <input type="radio" id="rdr1" value="male" name="rd"/>
+ Female <input type="radio" id="rdr2" value="female" name="rd"/>
+ <input type="range" id="mySlider"/>
+ <input type="button" onclick="handleSubmit()"/>
+ <input id="chk" type="checkbox" checked="false" value="demo" onchange="handleChange(this)"/>
+ <input type="text" id="txt" onchange="handleChangeTxt(this)"/>  
+ <input type="date" id="dt" />
+ <input type="text" id="txt_1"/>
+ <script type="text/javascript" src="demo.js" defer></script>
+   
+   <h1>Hello World</h1>
+
+   <input type="date" id="date_1" style="margin-left: 5%;"/>
+
+<p> Author :  <input type="checkbox" id="check_1" value="author"/> </p>
+
+<fieldset>
+  <legend>Registration Process</legend>
+<form method="post" id="form">
+  <p><input type="text" id="txt_one" placeholder="enter your username"/></p>
+  <p><input type="text" id="txt_two"  placeholder="enter password"/></p>
+  <p><input type="submit" id="btn_submit"/></p>
+</form>
+</fieldset>
+
+</body>
+</html>
